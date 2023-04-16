@@ -7,5 +7,5 @@ import (
 
 func Conn(connectionString string) (*gorm.DB, error) {
 	// Start DB Connection
-	return gorm.Open(mysql.Open(connectionString))
+	return gorm.Open(mysql.Open(connectionString), &gorm.Config{})
 }
