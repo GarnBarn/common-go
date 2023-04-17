@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/GarnBarn/common-go";
+option go_package = "github.com/GarnBarn/common-go/proto";
 
 package tag;
 

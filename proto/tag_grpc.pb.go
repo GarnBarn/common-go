@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.12
-// source: grpc/proto/tag.proto
+// source: proto/tag.proto
 
-package common_go
+package proto
 
 import (
 	context "context"
@@ -137,5 +137,5 @@ var Tag_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "grpc/proto/tag.proto",
+	Metadata: "proto/tag.proto",
 }
