@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option go_package = "github.com/GarnBarn/common-go";
+
+package tag;
+
+service Tag {
+  rpc IsTagExists(TagRequest) returns (TagExistsResponse) {}
+  rpc GetTag(TagRequest) returns (TagPublic) {}
+}
+
+message TagRequest {
+  int32 tagId = 1;
+  bool consealPrivateKey = 2;
+}
+
+message TagExistsResponse { bool isExists = 1; }
+
+message TagPublic {
+  string id = 1;
+  string name = 2;
+  string author = 3;
+  string Color = 4;
+  repeated int32 reminderTime = 5;
+  repeated string Subscriber = 6;
+  string SecretKeyTotp = 7;
+}
