@@ -10,5 +10,4 @@ type Assignment struct {
 	ReminderTime string
 	DueDate      int
 	TagID        int
-	Tag          *Tag
 }
