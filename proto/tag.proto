@@ -20,8 +20,8 @@ message TagPublic {
   string id = 1;
   string name = 2;
   string author = 3;
-  string Color = 4;
+  string color = 4;
   repeated int32 reminderTime = 5;
-  repeated string Subscriber = 6;
-  string SecretKeyTotp = 7;
+  repeated string subscriber = 6;
+  string secretKeyTotp = 7;
 }
