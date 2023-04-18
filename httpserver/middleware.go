@@ -1,5 +1,5 @@
 package httpserver
 
 const (
-	UserUidKey = "userUid"
+	UserUidKey = "x-gb-user"
 )
