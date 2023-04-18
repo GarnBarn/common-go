@@ -28,6 +28,7 @@ type rabbitMQ struct {
 type RabbitMQ interface {
 	Consume(processor Processor, consumerConfig ConsumerConfig) (*rabbitmq.Consumer, error)
 	GetPublisher() *rabbitmq.Publisher
+	CloseConnection()
 }
 
 func NewRabbitMQ(connectionString string) (RabbitMQ, error) {
@@ -53,6 +54,11 @@ func NewRabbitMQ(connectionString string) (RabbitMQ, error) {
 		conn:      conn,
 		publisher: publisher,
 	}, nil
+}
+
+func (r *rabbitMQ) CloseConnection() {
+	r.publisher.Close()
+	r.conn.Close()
 }
 
 func (r *rabbitMQ) GetPublisher() *rabbitmq.Publisher {
