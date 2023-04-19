@@ -11,3 +11,7 @@ type Tag struct {
 	Subscriber    string
 	SecretKeyTotp string
 }
+
+type TagDeleteRequest struct {
+	ID int
+}
