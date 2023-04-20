@@ -11,3 +11,7 @@ type Assignment struct {
 	DueDate      int
 	TagID        int
 }
+
+type AssignmentDeleteRequest struct {
+	ID int
+}
