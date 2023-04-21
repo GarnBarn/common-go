@@ -12,6 +12,10 @@ func AuthModelMapping() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		key := c.GetHeader(UserUidKey)
 		splittedKey := strings.Split(key, " ")
+		if len(splittedKey) != 2 {
+			c.AbortWithStatus(http.StatusForbidden)
+			return
+		}
 		tokenStr := splittedKey[1]
 
 		token, err := jwt.Parse(tokenStr, nil)

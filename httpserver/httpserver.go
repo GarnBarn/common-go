@@ -24,6 +24,7 @@ func NewHttpServer() *gin.Engine {
 		MaxAge: 12 * time.Hour,
 	}))
 
-	router.GET("/healthcheck", healthCheckHandler)
+	healthCheckGroup := router.Group("healthcheck")
+	healthCheckGroup.GET("/", healthCheckHandler)
 	return router
 }
