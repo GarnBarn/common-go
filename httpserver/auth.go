@@ -10,7 +10,14 @@ import (
 
 func AuthModelMapping() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		key := c.GetHeader(UserUidKey)
+		currentUserId := c.GetHeader(UserUidKey)
+		if currentUserId != "" {
+			c.Next()
+			return
+		}
+
+		key := c.GetHeader("Authorization")
+
 		splittedKey := strings.Split(key, " ")
 		if len(splittedKey) != 2 {
 			c.AbortWithStatus(http.StatusForbidden)
