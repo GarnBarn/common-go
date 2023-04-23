@@ -6,6 +6,7 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
 func AuthModelMapping() gin.HandlerFunc {
@@ -18,8 +19,13 @@ func AuthModelMapping() gin.HandlerFunc {
 
 		key := c.GetHeader("Authorization")
 
+		if key == "" {
+			key = c.GetHeader("authorization")
+		}
+
 		splittedKey := strings.Split(key, " ")
 		if len(splittedKey) != 2 {
+			logrus.Warn("Key not correctly structed.")
 			c.AbortWithStatus(http.StatusForbidden)
 			return
 		}
@@ -27,6 +33,7 @@ func AuthModelMapping() gin.HandlerFunc {
 
 		token, err := jwt.Parse(tokenStr, nil)
 		if token == nil || err != nil {
+			logrus.Warn("Can't parse jwt")
 			c.AbortWithStatus(http.StatusForbidden)
 			return
 		}
