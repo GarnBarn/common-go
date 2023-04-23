@@ -31,6 +31,8 @@ func AuthModelMapping() gin.HandlerFunc {
 		}
 		tokenStr := splittedKey[1]
 
+		logrus.Info("Token Str: ", tokenStr)
+
 		token, err := jwt.Parse(tokenStr, nil)
 		if token == nil || err != nil {
 			logrus.Warn("Can't parse jwt")
