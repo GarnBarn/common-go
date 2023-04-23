@@ -33,8 +33,8 @@ func AuthModelMapping() gin.HandlerFunc {
 
 		logrus.Info("Token Str: ", tokenStr)
 
-		token, err := jwt.Parse(tokenStr, nil)
-		if token == nil || err != nil {
+		token, _ := jwt.Parse(tokenStr, nil)
+		if token == nil {
 			logrus.Warn("Can't parse jwt")
 			c.AbortWithStatus(http.StatusForbidden)
 			return
