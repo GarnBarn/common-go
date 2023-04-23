@@ -48,7 +48,7 @@ func AuthModelMapping() gin.HandlerFunc {
 			return
 		}
 
-		c.Header(UserUidKey, result)
+		c.Request.Header.Add(UserUidKey, result)
 		c.Next()
 	}
 }
